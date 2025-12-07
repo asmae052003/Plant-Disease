@@ -1,4 +1,4 @@
-# Plant Disease Classification
+# Early detection of plant diseases
 
 This project is a deep learning-based application for detecting plant diseases from images. It uses a hybrid model combining Vision Transformer (ViT) for global features and EfficientNet for local patch features, fused with an attention mechanism.
 
