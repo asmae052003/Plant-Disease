@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌿 Plant Doctor</h1>
+        <p class="subtitle">AI-Powered Disease Detection</p>
+
+        <form action="/" method="post" enctype="multipart/form-data" id="upload-form">
+            <div class="upload-area" id="upload-area">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <p class="upload-text">Drag & Drop or Click to Upload Leaf Image</p>
+                <input type="file" name="file" id="file-input" accept="image/*">
+            </div>
+        </form>
+
+        <div class="preview-container" id="preview-container" {% if image_url %}style="display: block;" {% endif %}>
+            {% if image_url %}
+            <img src="{{ image_url }}" alt="Uploaded Image" class="preview-image" id="preview-image">
+            {% else %}
+            <img src="" alt="Preview" class="preview-image" id="preview-image">
+            {% endif %}
+        </div>
+
+        {% if prediction %}
+        {% if prediction.error %}
+        <div class="error">
+            <p><i class="fas fa-exclamation-circle"></i> Error: {{ prediction.error }}</p>
+        </div>
+        {% else %}
+        <div class="result-card visible">
+            <p>Diagnosis Result</p>
+            <h2 class="disease-name">{{ prediction.class }}</h2>
+            <div class="confidence-meter">
+                <div class="confidence-fill" data-width="{{ prediction.confidence }}" style="width: 0%"></div>
+            </div>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #7f8c8d;">Confidence: {{ prediction.confidence }}
+            </p>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="spinner"></div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by Advanced AI • v1.0</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #27ae60;
+    --accent-color: #f1c40f;
+    --text-color: #2c3e50;
+    --bg-gradient: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+body {
+    font-family: 'Outfit', 'Segoe UI', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align_items: center;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: var(--glass-border);
+    box-shadow: var(--shadow);
+    padding: 3rem;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.upload-area {
+    border: 3px dashed #bdc3c7;
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area:hover, .upload-area.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(46, 204, 113, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: #bdc3c7;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.upload-area:hover .upload-icon {
+    color: var(--primary-color);
+}
+
+.upload-text {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.preview-container {
+    margin-top: 2rem;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 4px solid white;
+}
+
+.result-card {
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    animation: slideUp 0.5s ease;
+    display: none; /* Hidden by default, shown by JS/Template */
+}
+
+.result-card.visible {
+    display: block;
+}
+
+.disease-name {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin: 0.5rem 0;
+    font-weight: 700;
+}
+
+.confidence-meter {
+    height: 10px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    margin-top: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 0%; /* Animate this */
+    transition: width 1s ease-out;
+    border-radius: 5px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}

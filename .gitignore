@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Model weights (usually too large for git without LFS)
+*.pth
+*.pt
+
+# Uploads
+static/uploads/
+
+# Environment
+venv/
+env/
+.env
+
+# IDEs
+.vscode/
+.idea/
