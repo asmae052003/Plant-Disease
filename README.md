@@ -25,7 +25,7 @@ This project is a deep learning-based application for detecting plant diseases f
     *(Note: It's recommended to use a virtual environment)*
 
 3.  **Model Checkpoint:**
-    Place your trained model file `best_model_final.pth` in the project root directory.
+    Download the trained model file `best_model_final.pth` from [Google Drive](https://drive.google.com/file/d/18oiNWttcJOeMVz63MC3Nx9DvtEfx10Xv/view?usp=sharing) and place it in the project root directory.
 
 ## Usage
 
@@ -56,6 +56,4 @@ The model architecture is defined in `model.py` (and `inspect_model.py`) and fea
 - **Local Branch**: EfficientNet-B0 extracting features from high-resolution patches.
 - **Fusion**: Attention-based fusion of global and local feature vectors.
 
-## License
 
-[Specify License Here]
